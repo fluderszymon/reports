@@ -1,6 +1,6 @@
-package com.szymonfluder.raports.dao;
+package com.szymonfluder.reports.dao;
 
-import com.szymonfluder.raports.Entity.ProductFormat;
+import com.szymonfluder.reports.Entity.ProductFormat;
 
 import java.util.List;
 
@@ -10,6 +10,6 @@ public interface ProductFormatDAO {
     List<ProductFormat> getAllProductFormats();
     ProductFormat getProductFormatById(int id);
     void deleteProductFormatById(int id);
-    void updateProductFormat(int id, ProductFormat productFormat);
+    void updateProductFormat(ProductFormat productFormat);
 
 }

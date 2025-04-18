@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.szymonfluder</groupId>
-    <artifactId>raports</artifactId>
+    <artifactId>reports</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>raports</name>
     <description>raports</description>

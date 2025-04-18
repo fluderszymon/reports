@@ -1,4 +1,4 @@
-package com.szymonfluder.raports.security;
+package com.szymonfluder.reports.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

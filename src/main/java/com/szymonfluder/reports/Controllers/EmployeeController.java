@@ -1,7 +1,7 @@
-package com.szymonfluder.raports.Controllers;
+package com.szymonfluder.reports.Controllers;
 
-import com.szymonfluder.raports.Entity.Employee;
-import com.szymonfluder.raports.dao.EmployeeDAO;
+import com.szymonfluder.reports.Entity.Employee;
+import com.szymonfluder.reports.dao.EmployeeDAO;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,7 +9,7 @@ import java.util.List;
 
 @RestController
 @PreAuthorize("hasAuthority('ROLE_USER')")
-@RequestMapping("/raports")
+@RequestMapping("/employees")
 public class EmployeeController {
 
     private final EmployeeDAO employeeDAO;
@@ -18,31 +18,32 @@ public class EmployeeController {
         this.employeeDAO = theEmployeeDAO;
     }
 
-    @PostMapping("/addEmployee")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PostMapping
     public void addEmployee(@RequestBody Employee employee){
         employeeDAO.addEmployee(employee);
     }
 
-    @GetMapping("employees/{id}")
+    @GetMapping("/{id}")
     public Employee getEmployeeById(@PathVariable int id) {
         return employeeDAO.getEmployeeById(id);
     }
 
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
-    @GetMapping("/employees")
+    @GetMapping
     public List<Employee> getAllEmployees() {
         return employeeDAO.getAllEmployees();
     }
 
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
-    @DeleteMapping("employees/{id}")
+    @DeleteMapping("/{id}")
     public void deleteEmployeeById(@PathVariable int id) {
         employeeDAO.deleteEmployeeById(id);
     }
 
-    @PostMapping("/updateEmployee/{id}")
-    public void updateEmployee(@PathVariable int id, @RequestBody Employee employee) {
-        employeeDAO.updateEmployee(id, employee);
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PutMapping("/{id}")
+    public void updateEmployee(@RequestBody Employee employee) {
+        employeeDAO.updateEmployee(employee);
     }
 }
 

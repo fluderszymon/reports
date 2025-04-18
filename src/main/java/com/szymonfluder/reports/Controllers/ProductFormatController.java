@@ -1,10 +1,7 @@
-package com.szymonfluder.raports.Controllers;
+package com.szymonfluder.reports.Controllers;
 
-import com.szymonfluder.raports.Entity.CompressiveStrengthTest;
-import com.szymonfluder.raports.Entity.Employee;
-import com.szymonfluder.raports.Entity.ProductFormat;
-import com.szymonfluder.raports.dao.ProductFormatDAO;
-import com.szymonfluder.raports.dao.impl.ProductFormatDAOImpl;
+import com.szymonfluder.reports.Entity.ProductFormat;
+import com.szymonfluder.reports.dao.ProductFormatDAO;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,7 +9,7 @@ import java.util.List;
 
 @RestController
 @PreAuthorize("hasAuthority('ROLE_USER')")
-@RequestMapping("/raports")
+@RequestMapping("/product-formats")
 public class ProductFormatController {
 
     private final ProductFormatDAO productFormatDAO;
@@ -21,31 +18,32 @@ public class ProductFormatController {
         this.productFormatDAO = productFormatDAO;
     }
 
-    @PostMapping("/addProductFormat")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PostMapping
     public void addProductFormat(@RequestBody ProductFormat productFormat) {
         productFormatDAO.addProductFormat(productFormat);
     }
 
-    @GetMapping("productFormats/{id}")
+    @GetMapping("/{id}")
     public ProductFormat getProductFormatById(@PathVariable int id) {
         return productFormatDAO.getProductFormatById(id);
     }
 
-    @GetMapping("/productFormats")
+    @GetMapping
     public List<ProductFormat> getProductFormats() {
         return productFormatDAO.getAllProductFormats();
     }
 
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
-    @DeleteMapping("/productFormat/{id}")
+    @DeleteMapping("/{id}")
     public void deleteProductFormatById(@PathVariable int id) {
         productFormatDAO.deleteProductFormatById(id);
     }
 
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
-    @PostMapping("/updateProductFormat/{id}")
-    public void updateProductFormat(@PathVariable int id, @RequestBody ProductFormat productFormat) {
-        productFormatDAO.updateProductFormat(id, productFormat);
+    @PutMapping("/{id}")
+    public void updateProductFormat(@RequestBody ProductFormat productFormat) {
+        productFormatDAO.updateProductFormat(productFormat);
     }
 
 }

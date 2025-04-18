@@ -1,4 +1,4 @@
-package com.szymonfluder.raports.Entity;
+package com.szymonfluder.reports.Entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;

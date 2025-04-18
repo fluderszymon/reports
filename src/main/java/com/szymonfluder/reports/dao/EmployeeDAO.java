@@ -1,6 +1,6 @@
-package com.szymonfluder.raports.dao;
+package com.szymonfluder.reports.dao;
 
-import com.szymonfluder.raports.Entity.Employee;
+import com.szymonfluder.reports.Entity.Employee;
 
 import java.util.List;
 
@@ -10,6 +10,6 @@ public interface EmployeeDAO {
     List<Employee> getAllEmployees();
     Employee getEmployeeById(int id);
     void deleteEmployeeById(int id);
-    void updateEmployee(int id, Employee employee);
+    void updateEmployee(Employee employee);
 
 }

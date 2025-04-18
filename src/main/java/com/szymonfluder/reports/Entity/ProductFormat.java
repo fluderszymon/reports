@@ -1,7 +1,6 @@
-package com.szymonfluder.raports.Entity;
+package com.szymonfluder.reports.Entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
