@@ -41,7 +41,7 @@ public class EmployeeController {
     }
 
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
-    @PutMapping("/{id}")
+    @PutMapping
     public void updateEmployee(@RequestBody Employee employee) {
         employeeDAO.updateEmployee(employee);
     }

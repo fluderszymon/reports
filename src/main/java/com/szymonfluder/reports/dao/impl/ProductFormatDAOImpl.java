@@ -15,7 +15,6 @@ import java.util.List;
 public class ProductFormatDAOImpl implements ProductFormatDAO {
 
     private final EntityManager entityManager;
-    private final String ID_STRING_VALUE = "id";
 
     @Autowired
     public ProductFormatDAOImpl(EntityManager entityManager) {
@@ -56,7 +55,7 @@ public class ProductFormatDAOImpl implements ProductFormatDAO {
     public ProductFormat getProductFormatById(int id) {
         TypedQuery<ProductFormat> query = entityManager.createQuery("SELECT pf FROM ProductFormat pf " +
                                                                     "WHERE pf.id=:id", ProductFormat.class)
-            .setParameter(ID_STRING_VALUE, id);
+            .setParameter("id", id);
 
         return query.getSingleResult();
     }
@@ -65,7 +64,7 @@ public class ProductFormatDAOImpl implements ProductFormatDAO {
     @Transactional
     public void deleteProductFormatById(int id) {
         Query query = entityManager.createQuery("DELETE FROM ProductFormat pf WHERE pf.id=:id")
-            .setParameter(ID_STRING_VALUE, id);
+            .setParameter("id", id);
 
         query.executeUpdate();
     }
@@ -91,7 +90,7 @@ public class ProductFormatDAOImpl implements ProductFormatDAO {
                 .setParameter("minWeight", productFormat.getMinWeight())
                 .setParameter("maxWeight", productFormat.getMaxWeight())
                 .setParameter("minCompressiveStrengthInMPa", productFormat.getMinCompressiveStrengthInMPa())
-                .setParameter(ID_STRING_VALUE, productFormat.getId());
+                .setParameter("id", productFormat.getId());
 
         query.executeUpdate();
     }

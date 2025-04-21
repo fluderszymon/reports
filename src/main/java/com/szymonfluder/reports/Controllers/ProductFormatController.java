@@ -41,7 +41,7 @@ public class ProductFormatController {
     }
 
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
-    @PutMapping("/{id}")
+    @PutMapping
     public void updateProductFormat(@RequestBody ProductFormat productFormat) {
         productFormatDAO.updateProductFormat(productFormat);
     }

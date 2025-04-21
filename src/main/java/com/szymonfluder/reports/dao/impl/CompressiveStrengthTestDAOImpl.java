@@ -16,7 +16,6 @@ import java.util.List;
 public class CompressiveStrengthTestDAOImpl implements CompressiveStrengthTestDAO {
 
     private final EntityManager entityManager;
-    private final String ID_STRING_VALUE = "id";
 
     @Autowired
     public CompressiveStrengthTestDAOImpl(EntityManager entityManager) {
@@ -40,7 +39,7 @@ public class CompressiveStrengthTestDAOImpl implements CompressiveStrengthTestDA
     public CompressiveStrengthTest getCompressiveStrengthTestById(int id) {
         TypedQuery<CompressiveStrengthTest> query = entityManager.createQuery("SELECT cst FROM CompressiveStrengthTest cst " +
                                                                               "WHERE cst.id=:id", CompressiveStrengthTest.class)
-            .setParameter(ID_STRING_VALUE, id);
+            .setParameter("id", id);
 
             return query.getSingleResult();
     }
@@ -55,7 +54,7 @@ public class CompressiveStrengthTestDAOImpl implements CompressiveStrengthTestDA
     @Transactional
     public void deleteCompressiveStrengthTestById(int id) {
         Query query = entityManager.createQuery("DELETE FROM CompressiveStrengthTest cst WHERE cst.id=:id");
-        query.setParameter(ID_STRING_VALUE, id);
+        query.setParameter("id", id);
         query.executeUpdate();
     }
 
@@ -70,19 +69,19 @@ public class CompressiveStrengthTestDAOImpl implements CompressiveStrengthTestDA
                 .setParameter("batch", compressiveStrengthTest.getBatch())
                 .setParameter("test_date", compressiveStrengthTest.getTestDate())
                 .setParameter("product_format_id", product_format_id);
-        query.setParameter(ID_STRING_VALUE, compressiveStrengthTest.getId());
+        query.setParameter("id", compressiveStrengthTest.getId());
         query.executeUpdate();
     }
 
     @Override
     @Transactional
     public void addCompressiveStrengthTestResults(int compressiveStrengthTestId, ArrayList<Integer> results) {
-        for (int i = 0; i < results.size(); i++) {
+        for (int result : results) {
             Query query = entityManager.createNativeQuery("INSERT INTO results_in_mpa " +
-                                                          "(compressivestrengthtest_id, result_in_mpa) " +
-                                                          "VALUES (:compressivestrengthtest_id, :result_in_mpa)")
-                .setParameter("compressivestrengthtest_id", compressiveStrengthTestId)
-                .setParameter("result_in_mpa", results.get(i));
+                            "(compressivestrengthtest_id, result_in_mpa) " +
+                            "VALUES (:compressivestrengthtest_id, :result_in_mpa)")
+                    .setParameter("compressivestrengthtest_id", compressiveStrengthTestId)
+                    .setParameter("result_in_mpa", result);
             query.executeUpdate();
         }
     }
@@ -91,7 +90,7 @@ public class CompressiveStrengthTestDAOImpl implements CompressiveStrengthTestDA
     public List<CompressiveStrengthTest> getCompressiveStrengthTestsByEmployeeId(int employee_id) {
         TypedQuery<CompressiveStrengthTest> query = entityManager.createQuery("SELECT cst FROM CompressiveStrengthTest cst INNER JOIN cst.employee " +
                                                                               "WHERE cst.employee.id =:id", CompressiveStrengthTest.class)
-            .setParameter(ID_STRING_VALUE, employee_id);
+            .setParameter("id", employee_id);
 
         return query.getResultList();
     }

@@ -44,18 +44,19 @@ public class CompressiveStrengthTestController {
     }
 
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
-    @PutMapping("/{id}/{employeeId}/{product_format_id}")
+    @PutMapping("/{employeeId}/{product_format_id}")
     public void updateCompressiveStrengthTest(@PathVariable int employeeId, @PathVariable int product_format_id,
                                               @RequestBody CompressiveStrengthTest compressiveStrengthTest) {
         compressiveStrengthTestDAO.updateCompressiveStrengthTest(employeeId, product_format_id, compressiveStrengthTest);
     }
 
-    @PostMapping("/addCompressiveStrengthTestResults/{id}")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PostMapping("/test-results/{id}")
     public void addCompressiveStrengthTestResult(@PathVariable int id, @RequestBody ArrayList<Integer> results) {
         compressiveStrengthTestDAO.addCompressiveStrengthTestResults(id, results);
     }
 
-    @GetMapping("/compressiveStrengthTestsByEmployeeId/{employee_id}")
+    @GetMapping("/get-by-employee-id/{employee_id}")
     public List<CompressiveStrengthTest> getCompressiveStrengthTestsByEmployeeId(@PathVariable int employee_id) {
         return compressiveStrengthTestDAO.getCompressiveStrengthTestsByEmployeeId(employee_id);
     }
