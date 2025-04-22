@@ -1,7 +1,7 @@
 package com.szymonfluder.reports.Controllers;
 
-import com.szymonfluder.reports.Entity.CompressiveStrengthTest;
 import com.szymonfluder.reports.dao.CompressiveStrengthTestDAO;
+import com.szymonfluder.reports.dto.CompressiveStrengthTestDTO;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,20 +20,18 @@ public class CompressiveStrengthTestController {
     }
 
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
-    @PostMapping("/{employee_id}/{product_format_id}")
-    public void addCompressiveStrengthTest(@PathVariable int employee_id,
-                                           @PathVariable int product_format_id,
-                                           @RequestBody CompressiveStrengthTest compressiveStrengthTest) {
-        compressiveStrengthTestDAO.addCompressiveStrengthTest(employee_id, product_format_id, compressiveStrengthTest);
+    @PostMapping
+    public void addCompressiveStrengthTest(@RequestBody CompressiveStrengthTestDTO compressiveStrengthTestDTO) {
+        compressiveStrengthTestDAO.addCompressiveStrengthTest(compressiveStrengthTestDTO);
     }
 
     @GetMapping("/{id}")
-    public CompressiveStrengthTest getCompressiveStrengthTestById(@PathVariable int id) {
+    public CompressiveStrengthTestDTO getCompressiveStrengthTestById(@PathVariable int id) {
         return compressiveStrengthTestDAO.getCompressiveStrengthTestById(id);
     }
 
     @GetMapping
-    public List<CompressiveStrengthTest> findAllCompressiveStrengthTests() {
+    public List<CompressiveStrengthTestDTO> findAllCompressiveStrengthTests() {
         return compressiveStrengthTestDAO.getCompressiveStrengthTests();
     }
 
@@ -44,10 +42,9 @@ public class CompressiveStrengthTestController {
     }
 
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
-    @PutMapping("/{employeeId}/{product_format_id}")
-    public void updateCompressiveStrengthTest(@PathVariable int employeeId, @PathVariable int product_format_id,
-                                              @RequestBody CompressiveStrengthTest compressiveStrengthTest) {
-        compressiveStrengthTestDAO.updateCompressiveStrengthTest(employeeId, product_format_id, compressiveStrengthTest);
+    @PutMapping
+    public void updateCompressiveStrengthTest(@RequestBody CompressiveStrengthTestDTO compressiveStrengthTestDTO) {
+        compressiveStrengthTestDAO.updateCompressiveStrengthTest(compressiveStrengthTestDTO);
     }
 
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
@@ -57,7 +54,7 @@ public class CompressiveStrengthTestController {
     }
 
     @GetMapping("/get-by-employee-id/{employee_id}")
-    public List<CompressiveStrengthTest> getCompressiveStrengthTestsByEmployeeId(@PathVariable int employee_id) {
+    public List<CompressiveStrengthTestDTO> getCompressiveStrengthTestsByEmployeeId(@PathVariable int employee_id) {
         return compressiveStrengthTestDAO.getCompressiveStrengthTestsByEmployeeId(employee_id);
     }
 }

@@ -71,6 +71,10 @@ public class ProductFormat {
         this.minCompressiveStrengthInMPa = minCompressiveStrengthInMPa;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public int getId() {
         return id;
     }
