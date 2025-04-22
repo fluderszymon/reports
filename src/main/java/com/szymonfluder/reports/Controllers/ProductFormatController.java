@@ -2,6 +2,7 @@ package com.szymonfluder.reports.Controllers;
 
 import com.szymonfluder.reports.Entity.ProductFormat;
 import com.szymonfluder.reports.dao.ProductFormatDAO;
+import com.szymonfluder.reports.dto.ProductFormatDTO;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,17 +21,17 @@ public class ProductFormatController {
 
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PostMapping
-    public void addProductFormat(@RequestBody ProductFormat productFormat) {
-        productFormatDAO.addProductFormat(productFormat);
+    public void addProductFormat(@RequestBody ProductFormatDTO productFormatDTO) {
+        productFormatDAO.addProductFormat(productFormatDTO);
     }
 
     @GetMapping("/{id}")
-    public ProductFormat getProductFormatById(@PathVariable int id) {
+    public ProductFormatDTO getProductFormatById(@PathVariable int id) {
         return productFormatDAO.getProductFormatById(id);
     }
 
     @GetMapping
-    public List<ProductFormat> getProductFormats() {
+    public List<ProductFormatDTO> getProductFormats() {
         return productFormatDAO.getAllProductFormats();
     }
 
@@ -42,8 +43,8 @@ public class ProductFormatController {
 
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PutMapping
-    public void updateProductFormat(@RequestBody ProductFormat productFormat) {
-        productFormatDAO.updateProductFormat(productFormat);
+    public void updateProductFormat(@RequestBody ProductFormatDTO productFormatDTO) {
+        productFormatDAO.updateProductFormat(productFormatDTO);
     }
 
 }

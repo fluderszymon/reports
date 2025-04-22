@@ -1,7 +1,5 @@
 package com.szymonfluder.reports.dto;
 
-import com.szymonfluder.reports.Entity.Employee;
-
 public class EmployeeDTO {
     private int id;
     private String firstName;

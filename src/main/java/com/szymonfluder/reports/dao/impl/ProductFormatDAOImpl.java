@@ -2,6 +2,8 @@ package com.szymonfluder.reports.dao.impl;
 
 import com.szymonfluder.reports.Entity.ProductFormat;
 import com.szymonfluder.reports.dao.ProductFormatDAO;
+import com.szymonfluder.reports.dto.ProductFormatDTO;
+import com.szymonfluder.reports.dto.ProductFormatMapper;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
@@ -10,20 +12,24 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Repository
 public class ProductFormatDAOImpl implements ProductFormatDAO {
 
     private final EntityManager entityManager;
+    private final ProductFormatMapper productFormatMapper;
 
     @Autowired
-    public ProductFormatDAOImpl(EntityManager entityManager) {
+    public ProductFormatDAOImpl(EntityManager entityManager, ProductFormatMapper productFormatMapper) {
         this.entityManager = entityManager;
+        this.productFormatMapper = productFormatMapper;
     }
 
     @Override
     @Transactional
-    public void addProductFormat(ProductFormat productFormat) {
+    public void addProductFormat(ProductFormatDTO productFormatDTO) {
+        ProductFormat productFormat = productFormatMapper.productFormatDtoToProductFormat(productFormatDTO);
         Query query = entityManager.createQuery("INSERT INTO ProductFormat (formatName, formatNumber, minLength, " +
                                                 "maxLength, minWidth, maxWidth, minHeight, maxHeight, " +
                                                 "minWeight, maxWeight, minCompressiveStrengthInMPa) " +
@@ -46,18 +52,21 @@ public class ProductFormatDAOImpl implements ProductFormatDAO {
     }
 
     @Override
-    public List<ProductFormat> getAllProductFormats() {
+    public List<ProductFormatDTO> getAllProductFormats() {
         TypedQuery<ProductFormat> query = entityManager.createQuery("FROM ProductFormat", ProductFormat.class);
-        return query.getResultList();
+        return query.getResultList()
+                .stream()
+                .map(productFormatMapper::productFormatToProductFOrmatDto)
+                .collect(Collectors.toList());
     }
 
     @Override
-    public ProductFormat getProductFormatById(int id) {
+    public ProductFormatDTO getProductFormatById(int id) {
         TypedQuery<ProductFormat> query = entityManager.createQuery("SELECT pf FROM ProductFormat pf " +
                                                                     "WHERE pf.id=:id", ProductFormat.class)
             .setParameter("id", id);
 
-        return query.getSingleResult();
+        return productFormatMapper.productFormatToProductFOrmatDto(query.getSingleResult());
     }
 
     @Override
@@ -71,7 +80,8 @@ public class ProductFormatDAOImpl implements ProductFormatDAO {
 
     @Override
     @Transactional
-    public void updateProductFormat(ProductFormat productFormat) {
+    public void updateProductFormat(ProductFormatDTO productFormatDTO) {
+        ProductFormat productFormat = productFormatMapper.productFormatDtoToProductFormat(productFormatDTO);
         Query query = entityManager.createQuery("UPDATE ProductFormat " +
                                                     "SET formatName =:formatName, formatNumber =:formatNumber, " +
                                                     "minLength =:minLength, maxLength =:maxLength, minWidth =:minWidth, " +
