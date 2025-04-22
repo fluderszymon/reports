@@ -2,10 +2,12 @@ package com.szymonfluder.reports.Controllers;
 
 import com.szymonfluder.reports.Entity.Employee;
 import com.szymonfluder.reports.dao.EmployeeDAO;
+import com.szymonfluder.reports.dto.EmployeeDTO;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @PreAuthorize("hasAuthority('ROLE_USER')")
@@ -20,17 +22,17 @@ public class EmployeeController {
 
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PostMapping
-    public void addEmployee(@RequestBody Employee employee){
-        employeeDAO.addEmployee(employee);
+    public void addEmployee(@RequestBody EmployeeDTO employeeDTO){
+        employeeDAO.addEmployee(employeeDTO);
     }
 
     @GetMapping("/{id}")
-    public Employee getEmployeeById(@PathVariable int id) {
+    public EmployeeDTO getEmployeeById(@PathVariable int id) {
         return employeeDAO.getEmployeeById(id);
     }
 
     @GetMapping
-    public List<Employee> getAllEmployees() {
+    public List<EmployeeDTO> getAllEmployees() {
         return employeeDAO.getAllEmployees();
     }
 
@@ -42,8 +44,8 @@ public class EmployeeController {
 
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PutMapping
-    public void updateEmployee(@RequestBody Employee employee) {
-        employeeDAO.updateEmployee(employee);
+    public void updateEmployee(@RequestBody EmployeeDTO employeeDTO) {
+        employeeDAO.updateEmployee(employeeDTO);
     }
 }
 
