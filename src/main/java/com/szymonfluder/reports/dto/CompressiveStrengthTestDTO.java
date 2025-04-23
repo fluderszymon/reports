@@ -1,11 +1,11 @@
 package com.szymonfluder.reports.dto;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class CompressiveStrengthTestDTO {
 
     private int id;
-    private Date testDate;
+    private LocalDateTime testDate;
     private String batch;
     private int measuredStrength;
     private int productFormatId;
@@ -14,7 +14,7 @@ public class CompressiveStrengthTestDTO {
     public CompressiveStrengthTestDTO() {
     }
 
-    public CompressiveStrengthTestDTO(int id, Date testDate, String batch, int measuredStrength,
+    public CompressiveStrengthTestDTO(int id, LocalDateTime testDate, String batch, int measuredStrength,
                                       int productFormatId, int employeeId) {
         this.id = id;
         this.testDate = testDate;
@@ -32,11 +32,11 @@ public class CompressiveStrengthTestDTO {
         this.id = id;
     }
 
-    public Date getTestDate() {
+    public LocalDateTime getTestDate() {
         return testDate;
     }
 
-    public void setTestDate(Date testDate) {
+    public void setTestDate(LocalDateTime testDate) {
         this.testDate = testDate;
     }
 

@@ -1,11 +1,8 @@
 package com.szymonfluder.reports.Entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
-
-import java.util.Date;
-import java.util.List;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name="compressive_strength_test")
@@ -17,8 +14,7 @@ public class CompressiveStrengthTest {
     private int id;
 
     @Column(name="test_date")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-mm-dd HH:mm:ss.SSSSSS")
-    private Date testDate;
+    private LocalDateTime testDate;
 
     @Column(name="batch")
     private String batch;
@@ -43,7 +39,7 @@ public class CompressiveStrengthTest {
     public CompressiveStrengthTest() {
     }
 
-    public CompressiveStrengthTest(Date testDate, String batch, int measuredStrength,
+    public CompressiveStrengthTest(LocalDateTime testDate, String batch, int measuredStrength,
                                    ProductFormat productFormat, Employee employee) {
         this.testDate = testDate;
         this.batch = batch;
@@ -60,11 +56,11 @@ public class CompressiveStrengthTest {
         this.id = id;
     }
 
-    public Date getTestDate() {
+    public LocalDateTime getTestDate() {
         return testDate;
     }
 
-    public void setTestDate(Date testDate) {
+    public void setTestDate(LocalDateTime testDate) {
         this.testDate = testDate;
     }
 

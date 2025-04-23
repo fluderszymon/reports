@@ -1,6 +1,5 @@
 package com.szymonfluder.reports.Controllers;
 
-import com.szymonfluder.reports.Entity.ProductFormat;
 import com.szymonfluder.reports.dao.ProductFormatDAO;
 import com.szymonfluder.reports.dto.ProductFormatDTO;
 import org.springframework.security.access.prepost.PreAuthorize;

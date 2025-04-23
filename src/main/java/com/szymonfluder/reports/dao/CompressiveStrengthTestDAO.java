@@ -2,7 +2,6 @@ package com.szymonfluder.reports.dao;
 
 import com.szymonfluder.reports.dto.CompressiveStrengthTestDTO;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public interface CompressiveStrengthTestDAO {

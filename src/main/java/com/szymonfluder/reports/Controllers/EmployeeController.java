@@ -1,13 +1,11 @@
 package com.szymonfluder.reports.Controllers;
 
-import com.szymonfluder.reports.Entity.Employee;
 import com.szymonfluder.reports.dao.EmployeeDAO;
 import com.szymonfluder.reports.dto.EmployeeDTO;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @PreAuthorize("hasAuthority('ROLE_USER')")

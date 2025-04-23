@@ -5,7 +5,6 @@ import com.szymonfluder.reports.dto.CompressiveStrengthTestDTO;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController

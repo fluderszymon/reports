@@ -1,6 +1,5 @@
 package com.szymonfluder.reports.dao;
 
-import com.szymonfluder.reports.Entity.ProductFormat;
 import com.szymonfluder.reports.dto.ProductFormatDTO;
 
 import java.util.List;

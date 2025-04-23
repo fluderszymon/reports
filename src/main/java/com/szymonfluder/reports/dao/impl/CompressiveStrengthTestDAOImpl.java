@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,10 +31,11 @@ public class CompressiveStrengthTestDAOImpl implements CompressiveStrengthTestDA
     public void addCompressiveStrengthTest(CompressiveStrengthTestDTO compressiveStrengthTestDTO) {
         CompressiveStrengthTest compressiveStrengthTest = compressiveStrengthTestMapper.compressiveStrengthTestDtoToCompressiveStrengthTest(compressiveStrengthTestDTO);
         Query query = entityManager.createNativeQuery("INSERT INTO compressive_strength_test " +
-                                                      "(employee_id, batch, test_date, product_format_id) " +
-                                                      "VALUES (:employee_id, :batch, :test_date, :product_format_id)")
+                                                      "(employee_id, batch, measured_strength, test_date, product_format_id) " +
+                                                      "VALUES (:employee_id, :batch, :measured_strength, :test_date, :product_format_id)")
                 .setParameter("employee_id", compressiveStrengthTest.getEmployee().getId())
                 .setParameter("batch", compressiveStrengthTest.getBatch())
+                .setParameter("measured_strength", compressiveStrengthTest.getMeasuredStrength())
                 .setParameter("test_date", compressiveStrengthTest.getTestDate())
                 .setParameter("product_format_id", compressiveStrengthTest.getProductFormat().getId());
         query.executeUpdate();
@@ -71,14 +71,15 @@ public class CompressiveStrengthTestDAOImpl implements CompressiveStrengthTestDA
     @Transactional
     public void updateCompressiveStrengthTest(CompressiveStrengthTestDTO compressiveStrengthTestDTO) {
         CompressiveStrengthTest compressiveStrengthTest = compressiveStrengthTestMapper.compressiveStrengthTestDtoToCompressiveStrengthTest(compressiveStrengthTestDTO);
-              Query query = entityManager.createNativeQuery("UPDATE compressive_strength_test " +
-                                                            "SET employee_id =:employee_id, batch =:batch, " +
+            Query query = entityManager.createNativeQuery("UPDATE compressive_strength_test " +
+                                                            "SET employee_id =:employee_id, batch =:batch, measured_strength =:measured_strength," +
                                                             "test_date =:test_date, product_format_id =:product_format_id " +
                                                             "WHERE compressive_strength_test.id =:id")
-                .setParameter("employee_id", compressiveStrengthTest.getEmployee().getId())
-                .setParameter("batch", compressiveStrengthTest.getBatch())
-                .setParameter("test_date", compressiveStrengthTest.getTestDate())
-                .setParameter("product_format_id", compressiveStrengthTest.getProductFormat().getId());
+              .setParameter("employee_id", compressiveStrengthTest.getEmployee().getId())
+              .setParameter("batch", compressiveStrengthTest.getBatch())
+              .setParameter("measured_strength", compressiveStrengthTest.getMeasuredStrength())
+              .setParameter("test_date", compressiveStrengthTest.getTestDate())
+              .setParameter("product_format_id", compressiveStrengthTest.getProductFormat().getId());
         query.setParameter("id", compressiveStrengthTest.getId());
         query.executeUpdate();
     }

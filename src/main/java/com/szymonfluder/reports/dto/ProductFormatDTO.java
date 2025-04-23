@@ -1,7 +1,5 @@
 package com.szymonfluder.reports.dto;
 
-import jakarta.persistence.Column;
-
 public class ProductFormatDTO {
 
     private int id;
