@@ -84,19 +84,6 @@ public class CompressiveStrengthTestDAOImpl implements CompressiveStrengthTestDA
     }
 
     @Override
-    @Transactional
-    public void addCompressiveStrengthTestResults(int compressiveStrengthTestId, ArrayList<Integer> results) {
-        for (int result : results) {
-            Query query = entityManager.createNativeQuery("INSERT INTO results_in_mpa " +
-                            "(compressivestrengthtest_id, result_in_mpa) " +
-                            "VALUES (:compressivestrengthtest_id, :result_in_mpa)")
-                    .setParameter("compressivestrengthtest_id", compressiveStrengthTestId)
-                    .setParameter("result_in_mpa", result);
-            query.executeUpdate();
-        }
-    }
-
-    @Override
     public List<CompressiveStrengthTestDTO> getCompressiveStrengthTestsByEmployeeId(int employee_id) {
         TypedQuery<CompressiveStrengthTest> query = entityManager.createQuery("SELECT cst FROM CompressiveStrengthTest cst INNER JOIN cst.employee " +
                                                                               "WHERE cst.employee.id =:id", CompressiveStrengthTest.class)

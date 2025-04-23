@@ -8,13 +8,13 @@ import org.mapstruct.factory.Mappers;
 @Mapper(componentModel="spring")
 public interface CompressiveStrengthTestMapper {
 
-    EmployeeMapper INSTANCE = Mappers.getMapper(EmployeeMapper.class);
+    CompressiveStrengthTestMapper INSTANCE = Mappers.getMapper(CompressiveStrengthTestMapper.class);
 
-    @Mapping(target = "employeeId", source = "employee.id")
-    @Mapping(target = "productFormatId", source = "productFormat.id")
+    @Mapping(source = "employee.id", target = "employeeId")
+    @Mapping(source = "productFormat.id", target = "productFormatId")
     CompressiveStrengthTestDTO compressiveStrengthTestToCompressiveStrengthTestDto(CompressiveStrengthTest compressiveStrengthTest);
 
-    @Mapping(target = "employee.id", source = "employeeId")
-    @Mapping(target = "productFormat.id", source = "productFormatId")
+    @Mapping(source = "employeeId", target = "employee.id")
+    @Mapping(source = "productFormatId", target = "productFormat.id")
     CompressiveStrengthTest compressiveStrengthTestDtoToCompressiveStrengthTest(CompressiveStrengthTestDTO compressiveStrengthTestDTO);
 }

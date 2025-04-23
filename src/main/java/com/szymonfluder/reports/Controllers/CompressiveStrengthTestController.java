@@ -47,12 +47,6 @@ public class CompressiveStrengthTestController {
         compressiveStrengthTestDAO.updateCompressiveStrengthTest(compressiveStrengthTestDTO);
     }
 
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
-    @PostMapping("/test-results/{id}")
-    public void addCompressiveStrengthTestResult(@PathVariable int id, @RequestBody ArrayList<Integer> results) {
-        compressiveStrengthTestDAO.addCompressiveStrengthTestResults(id, results);
-    }
-
     @GetMapping("/get-by-employee-id/{employee_id}")
     public List<CompressiveStrengthTestDTO> getCompressiveStrengthTestsByEmployeeId(@PathVariable int employee_id) {
         return compressiveStrengthTestDAO.getCompressiveStrengthTestsByEmployeeId(employee_id);
