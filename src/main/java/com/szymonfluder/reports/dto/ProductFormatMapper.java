@@ -1,6 +1,5 @@
 package com.szymonfluder.reports.dto;
 
-import com.szymonfluder.reports.Entity.Employee;
 import com.szymonfluder.reports.Entity.ProductFormat;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;

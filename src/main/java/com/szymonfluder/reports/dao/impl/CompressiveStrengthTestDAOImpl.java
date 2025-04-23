@@ -2,8 +2,7 @@ package com.szymonfluder.reports.dao.impl;
 
 import com.szymonfluder.reports.Entity.CompressiveStrengthTest;
 import com.szymonfluder.reports.dao.CompressiveStrengthTestDAO;
-import com.szymonfluder.reports.dto.CompressiveStrengthMapper;
-import com.szymonfluder.reports.dto.CompressiveStrengthMapperImpl;
+import com.szymonfluder.reports.dto.CompressiveStrengthTestMapper;
 import com.szymonfluder.reports.dto.CompressiveStrengthTestDTO;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
@@ -20,18 +19,18 @@ import java.util.stream.Collectors;
 public class CompressiveStrengthTestDAOImpl implements CompressiveStrengthTestDAO {
 
     private final EntityManager entityManager;
-    private final CompressiveStrengthMapper compressiveStrengthMapper;
+    private final CompressiveStrengthTestMapper compressiveStrengthTestMapper;
 
     @Autowired
-    public CompressiveStrengthTestDAOImpl(EntityManager entityManager, CompressiveStrengthMapper compressiveStrengthMapper, CompressiveStrengthMapperImpl compressiveStrengthMapperImpl) {
+    public CompressiveStrengthTestDAOImpl(EntityManager entityManager, CompressiveStrengthTestMapper compressiveStrengthTestMapper) {
         this.entityManager = entityManager;
-        this.compressiveStrengthMapper = compressiveStrengthMapper;
+        this.compressiveStrengthTestMapper = compressiveStrengthTestMapper;
     }
 
     @Override
     @Transactional
     public void addCompressiveStrengthTest(CompressiveStrengthTestDTO compressiveStrengthTestDTO) {
-        CompressiveStrengthTest compressiveStrengthTest = compressiveStrengthMapper.compressiveStrengthTestDtoToCompressiveStrengthTest(compressiveStrengthTestDTO);
+        CompressiveStrengthTest compressiveStrengthTest = compressiveStrengthTestMapper.compressiveStrengthTestDtoToCompressiveStrengthTest(compressiveStrengthTestDTO);
         Query query = entityManager.createNativeQuery("INSERT INTO compressive_strength_test " +
                                                       "(employee_id, batch, test_date, product_format_id) " +
                                                       "VALUES (:employee_id, :batch, :test_date, :product_format_id)")
@@ -48,7 +47,7 @@ public class CompressiveStrengthTestDAOImpl implements CompressiveStrengthTestDA
                                                                               "WHERE cst.id=:id", CompressiveStrengthTest.class)
             .setParameter("id", id);
 
-            return compressiveStrengthMapper.compressiveStrengthTestToCompressiveStrengthTestDto(query.getSingleResult());
+            return compressiveStrengthTestMapper.compressiveStrengthTestToCompressiveStrengthTestDto(query.getSingleResult());
     }
 
     @Override
@@ -56,7 +55,7 @@ public class CompressiveStrengthTestDAOImpl implements CompressiveStrengthTestDA
         TypedQuery<CompressiveStrengthTest> query = entityManager.createQuery("FROM CompressiveStrengthTest", CompressiveStrengthTest.class);
         return query.getResultList()
                 .stream()
-                .map(compressiveStrengthMapper::compressiveStrengthTestToCompressiveStrengthTestDto)
+                .map(compressiveStrengthTestMapper::compressiveStrengthTestToCompressiveStrengthTestDto)
                 .collect(Collectors.toList());
     }
 
@@ -71,7 +70,7 @@ public class CompressiveStrengthTestDAOImpl implements CompressiveStrengthTestDA
     @Override
     @Transactional
     public void updateCompressiveStrengthTest(CompressiveStrengthTestDTO compressiveStrengthTestDTO) {
-        CompressiveStrengthTest compressiveStrengthTest = compressiveStrengthMapper.compressiveStrengthTestDtoToCompressiveStrengthTest(compressiveStrengthTestDTO);
+        CompressiveStrengthTest compressiveStrengthTest = compressiveStrengthTestMapper.compressiveStrengthTestDtoToCompressiveStrengthTest(compressiveStrengthTestDTO);
               Query query = entityManager.createNativeQuery("UPDATE compressive_strength_test " +
                                                             "SET employee_id =:employee_id, batch =:batch, " +
                                                             "test_date =:test_date, product_format_id =:product_format_id " +
@@ -105,7 +104,7 @@ public class CompressiveStrengthTestDAOImpl implements CompressiveStrengthTestDA
 
         return query.getResultList()
                 .stream()
-                .map(compressiveStrengthMapper::compressiveStrengthTestToCompressiveStrengthTestDto)
+                .map(compressiveStrengthTestMapper::compressiveStrengthTestToCompressiveStrengthTestDto)
                 .collect(Collectors.toList());
     }
 }

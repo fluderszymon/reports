@@ -23,17 +23,15 @@ public class CompressiveStrengthTest {
     @Column(name="batch")
     private String batch;
 
+    @Column(name="measured_strength")
+    private int measuredStrength;
+
     @JsonBackReference(value="productFormat-compressiveStrengthTest")
     @ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
             CascadeType.DETACH, CascadeType.REFRESH},
             fetch = FetchType.LAZY)
     @JoinColumn(name="product_format_id")
     private ProductFormat productFormat;
-
-    @ElementCollection
-    @CollectionTable(name="results_in_mpa", joinColumns= @JoinColumn(name="compressivestrengthtest_id"))
-    @Column(name="result_in_mpa", nullable=false)
-    private List<Integer> resultsInMPa;
 
     @JsonBackReference(value="employee-compressiveStrengthTest")
     @ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
@@ -45,11 +43,12 @@ public class CompressiveStrengthTest {
     public CompressiveStrengthTest() {
     }
 
-    public CompressiveStrengthTest(Date testDate, String batch, ProductFormat productFormat, List<Integer> resultsInMPa, Employee employee) {
+    public CompressiveStrengthTest(Date testDate, String batch, int measuredStrength,
+                                   ProductFormat productFormat, Employee employee) {
         this.testDate = testDate;
         this.batch = batch;
+        this.measuredStrength = measuredStrength;
         this.productFormat = productFormat;
-        this.resultsInMPa = resultsInMPa;
         this.employee = employee;
     }
 
@@ -77,20 +76,20 @@ public class CompressiveStrengthTest {
         this.batch = batch;
     }
 
+    public int getMeasuredStrength() {
+        return measuredStrength;
+    }
+
+    public void setMeasuredStrength(int measuredStrength) {
+        this.measuredStrength = measuredStrength;
+    }
+
     public ProductFormat getProductFormat() {
         return productFormat;
     }
 
     public void setProductFormat(ProductFormat productFormat) {
         this.productFormat = productFormat;
-    }
-
-    public List<Integer> getResultsInMPa() {
-        return resultsInMPa;
-    }
-
-    public void setResultsInMPa(List<Integer> resultsInMPa) {
-        this.resultsInMPa = resultsInMPa;
     }
 
     public Employee getEmployee() {
@@ -107,8 +106,8 @@ public class CompressiveStrengthTest {
                 "id=" + id +
                 ", testDate=" + testDate +
                 ", batch='" + batch + '\'' +
+                ", measuredStrength=" + measuredStrength +
                 ", productFormat=" + productFormat +
-                ", resultsInMPa=" + resultsInMPa +
                 ", employee=" + employee +
                 '}';
     }

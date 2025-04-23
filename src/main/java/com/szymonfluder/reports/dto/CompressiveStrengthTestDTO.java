@@ -7,16 +7,19 @@ public class CompressiveStrengthTestDTO {
     private int id;
     private Date testDate;
     private String batch;
+    private int measuredStrength;
     private int productFormatId;
     private int employeeId;
 
     public CompressiveStrengthTestDTO() {
     }
 
-    public CompressiveStrengthTestDTO(int id, Date testDate, String batch, int productFormatId, int employeeId) {
+    public CompressiveStrengthTestDTO(int id, Date testDate, String batch, int measuredStrength,
+                                      int productFormatId, int employeeId) {
         this.id = id;
         this.testDate = testDate;
         this.batch = batch;
+        this.measuredStrength = measuredStrength;
         this.productFormatId = productFormatId;
         this.employeeId = employeeId;
     }
@@ -43,6 +46,14 @@ public class CompressiveStrengthTestDTO {
 
     public void setBatch(String batch) {
         this.batch = batch;
+    }
+
+    public int getMeasuredStrength() {
+        return measuredStrength;
+    }
+
+    public void setMeasuredStrength(int measuredStrength) {
+        this.measuredStrength = measuredStrength;
     }
 
     public int getProductFormatId() {

@@ -6,7 +6,7 @@ import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
 @Mapper(componentModel="spring")
-public interface CompressiveStrengthMapper {
+public interface CompressiveStrengthTestMapper {
 
     EmployeeMapper INSTANCE = Mappers.getMapper(EmployeeMapper.class);
 
