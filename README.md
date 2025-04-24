@@ -41,39 +41,32 @@ one controller for obtaining csrf token, which has to be passed in header as X-C
 ---
 ## Installation
 
+- Install Java 17 OpenJDK
+- Clone repository
+  ```
+  git clone https://github.com/fluderszymon/reports.git
+  ```
 - Database Setup
-<br>Install MySQL server and mySQL Workbench. Create connection and schema called "reports". Provide datasource, username and password in application.properties 
-
-```commandline
-spring.datasource.url=jdbc:mysql://localhost:3306/??????
-spring.datasource.username=??????
-spring.datasource.password=??????
-```
-
-- Source code
-```commandline
-git clone https://github.com/fluderszymon/reports.git
-```
-
-- Populate the database
-
-Firstly make temporary changes in application.properties from
-```commandline
-spring.jpa.hibernate.ddl-auto=update
-```
-to
-```commandline
-spring.jpa.hibernate.ddl-auto=create
-```
-and start application, so tables can be auto generated. And then go back to original properties.
-
-- Execute script [populate_database.sql](docs/populate_database.sql) to insert example data into tables.
-
-- Test in Postman - Import [Reports Project.postman_collection.json](docs/Reports%20Project.postman_collection.json) into Postman in order to test API endpoints.
+  - Install MySQL server and MySQL Workbench
+    - MySQL Server 8.0.42
+    - MySQL Workbench 8.0.42
+  - Create "reports" database and connect database user
+  - Set application properties
+     ```
+      spring.datasource.url=jdbc:mysql://localhost:3306/??????
+      spring.datasource.username=??????
+      spring.datasource.password=??????
+      ```
+  - Populate the database
+    - Start the application, so tables can be auto generated
+    - Execute script [populate_database.sql](docs/populate_database.sql) to insert example data into tables
+    
+- Testing in Postman 
+  - Import [Reports Project.postman_collection.json](docs/Reports%20Project.postman_collection.json) into Postman in order to test API endpoints
 
 ---
 ## License
-Distributed under the GNU GENERAL PUBLIC LICENSE.
+Distributed under the GNU GENERAL PUBLIC LICENSE
 
 ---
 ## Contact

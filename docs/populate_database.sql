@@ -1,4 +1,6 @@
-INSERT INTO 
+USE reports;
+
+INSERT INTO
 `reports`.`employee` 
 (`id`, `email`, `first_name`, `last_name`) 
 VALUES 
