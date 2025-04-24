@@ -28,7 +28,6 @@ public class CompressiveStrengthTestController {
         return compressiveStrengthTestDAO.getCompressiveStrengthTestById(id);
     }
 
-
     @GetMapping("/get-by-employee-id/{employee_id}")
     public List<CompressiveStrengthTestDTO> getCompressiveStrengthTestsByEmployeeId(@PathVariable int employee_id) {
         return compressiveStrengthTestDAO.getCompressiveStrengthTestsByEmployeeId(employee_id);
@@ -51,6 +50,4 @@ public class CompressiveStrengthTestController {
     public void updateCompressiveStrengthTest(@RequestBody CompressiveStrengthTestDTO compressiveStrengthTestDTO) {
         compressiveStrengthTestDAO.updateCompressiveStrengthTest(compressiveStrengthTestDTO);
     }
-
-
 }

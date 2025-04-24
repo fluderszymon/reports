@@ -46,4 +46,3 @@ public class EmployeeController {
         employeeDAO.updateEmployee(employeeDTO);
     }
 }
-

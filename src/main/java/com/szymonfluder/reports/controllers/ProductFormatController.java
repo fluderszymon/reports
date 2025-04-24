@@ -45,5 +45,4 @@ public class ProductFormatController {
     public void updateProductFormat(@RequestBody ProductFormatDTO productFormatDTO) {
         productFormatDAO.updateProductFormat(productFormatDTO);
     }
-
 }
