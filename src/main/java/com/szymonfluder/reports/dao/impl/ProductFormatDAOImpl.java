@@ -1,6 +1,6 @@
 package com.szymonfluder.reports.dao.impl;
 
-import com.szymonfluder.reports.Entity.ProductFormat;
+import com.szymonfluder.reports.entity.ProductFormat;
 import com.szymonfluder.reports.dao.ProductFormatDAO;
 import com.szymonfluder.reports.dto.ProductFormatDTO;
 import com.szymonfluder.reports.dto.ProductFormatMapper;

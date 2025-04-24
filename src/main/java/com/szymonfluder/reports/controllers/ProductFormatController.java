@@ -1,4 +1,4 @@
-package com.szymonfluder.reports.Controllers;
+package com.szymonfluder.reports.controllers;
 
 import com.szymonfluder.reports.dao.ProductFormatDAO;
 import com.szymonfluder.reports.dto.ProductFormatDTO;

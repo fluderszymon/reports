@@ -1,4 +1,4 @@
-package com.szymonfluder.reports.Controllers;
+package com.szymonfluder.reports.controllers;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.security.web.csrf.CsrfToken;

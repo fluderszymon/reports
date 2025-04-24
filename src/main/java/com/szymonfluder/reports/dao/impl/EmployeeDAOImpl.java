@@ -1,6 +1,6 @@
 package com.szymonfluder.reports.dao.impl;
 
-import com.szymonfluder.reports.Entity.Employee;
+import com.szymonfluder.reports.entity.Employee;
 import com.szymonfluder.reports.dao.EmployeeDAO;
 import com.szymonfluder.reports.dto.EmployeeDTO;
 import com.szymonfluder.reports.dto.EmployeeMapper;

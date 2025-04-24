@@ -1,4 +1,4 @@
-package com.szymonfluder.reports.Entity;
+package com.szymonfluder.reports.entity;
 
 public class AreometricAnalysisResults {
 

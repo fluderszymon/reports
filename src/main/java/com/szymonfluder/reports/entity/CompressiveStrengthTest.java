@@ -1,4 +1,4 @@
-package com.szymonfluder.reports.Entity;
+package com.szymonfluder.reports.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
