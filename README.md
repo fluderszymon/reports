@@ -35,7 +35,6 @@ one controller for obtaining csrf token, which has to be passed in header as X-C
 
 <li>MapStruct -> creating DTOs from entities and vice versa with @Mapper annotated methods. Creating and updating entity with relations is now possible with one @RequestBody without ids as @PathVariable</li>
 
-<li>Swagger -> API documentation</li>
 </ul>
 
 ---

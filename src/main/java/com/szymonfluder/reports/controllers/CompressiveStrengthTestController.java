@@ -18,10 +18,9 @@ public class CompressiveStrengthTestController {
         this.compressiveStrengthTestDAO = compressiveStrengthTestDAO;
     }
 
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
-    @PostMapping
-    public void addCompressiveStrengthTest(@RequestBody CompressiveStrengthTestDTO compressiveStrengthTestDTO) {
-        compressiveStrengthTestDAO.addCompressiveStrengthTest(compressiveStrengthTestDTO);
+    @GetMapping
+    public List<CompressiveStrengthTestDTO> findAllCompressiveStrengthTests() {
+        return compressiveStrengthTestDAO.getCompressiveStrengthTests();
     }
 
     @GetMapping("/{id}")
@@ -29,9 +28,15 @@ public class CompressiveStrengthTestController {
         return compressiveStrengthTestDAO.getCompressiveStrengthTestById(id);
     }
 
-    @GetMapping
-    public List<CompressiveStrengthTestDTO> findAllCompressiveStrengthTests() {
-        return compressiveStrengthTestDAO.getCompressiveStrengthTests();
+    @GetMapping("/get-by-employee-id/{employee_id}")
+    public List<CompressiveStrengthTestDTO> getCompressiveStrengthTestsByEmployeeId(@PathVariable int employee_id) {
+        return compressiveStrengthTestDAO.getCompressiveStrengthTestsByEmployeeId(employee_id);
+    }
+
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PostMapping
+    public void addCompressiveStrengthTest(@RequestBody CompressiveStrengthTestDTO compressiveStrengthTestDTO) {
+        compressiveStrengthTestDAO.addCompressiveStrengthTest(compressiveStrengthTestDTO);
     }
 
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
@@ -44,10 +49,5 @@ public class CompressiveStrengthTestController {
     @PutMapping
     public void updateCompressiveStrengthTest(@RequestBody CompressiveStrengthTestDTO compressiveStrengthTestDTO) {
         compressiveStrengthTestDAO.updateCompressiveStrengthTest(compressiveStrengthTestDTO);
-    }
-
-    @GetMapping("/get-by-employee-id/{employee_id}")
-    public List<CompressiveStrengthTestDTO> getCompressiveStrengthTestsByEmployeeId(@PathVariable int employee_id) {
-        return compressiveStrengthTestDAO.getCompressiveStrengthTestsByEmployeeId(employee_id);
     }
 }
