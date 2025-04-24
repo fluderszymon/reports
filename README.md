@@ -10,7 +10,7 @@ CompressiveStrengthTest. Relations between them are obtained by @OneToMany and @
 <br>
 
 ![entities_relations.png](docs/entities_relations.png)
-
+![postman_collection.png](docs/postman_collection.png)
 
 ---
 ## Content of Project
@@ -40,7 +40,6 @@ one controller for obtaining csrf token, which has to be passed in header as X-C
 
 ---
 ## Installation
-
 - Install Java 17 OpenJDK
 - Clone repository
   ```
