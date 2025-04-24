@@ -1,0 +1,417 @@
+{
+	"info": {
+		"_postman_id": "36238b4f-0225-40f5-b4c8-add668e48795",
+		"name": "Reports Project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "18925402"
+	},
+	"item": [
+		{
+			"name": "Employee Entity",
+			"item": [
+				{
+					"name": "addEmployee()",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"password": "admin",
+								"username": "admin"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-CSRF-TOKEN",
+								"value": "zpayAjRH4j3iwqvr9sMKauRDdCcK_a8eRGNLALAqHa3-pzl7-KbWZA0j0V7Po5jex-4-C9xwWR9smJ4zJQFyOdEcLZ-fxAhK",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\":\"Robert\",\r\n    \"lastName\":\"Kłosek\",\r\n    \"email\":\"rkłos@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/employees"
+					},
+					"response": []
+				},
+				{
+					"name": "getEmployeeById()",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"password": "admin",
+								"username": "admin"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/employees/3"
+					},
+					"response": []
+				},
+				{
+					"name": "getAllEmployees()",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"password": "admin",
+								"username": "admin"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/employees"
+					},
+					"response": []
+				},
+				{
+					"name": "updateEmployee()",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"password": "admin",
+								"username": "admin"
+							}
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "X-CSRF-TOKEN",
+								"value": "zpayAjRH4j3iwqvr9sMKauRDdCcK_a8eRGNLALAqHa3-pzl7-KbWZA0j0V7Po5jex-4-C9xwWR9smJ4zJQFyOdEcLZ-fxAhK",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 4,\r\n    \"firstName\":\"Alan\",\r\n    \"lastName\":\"Bąk\",\r\n    \"email\":\"ab@wp.pl\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/employees"
+					},
+					"response": []
+				},
+				{
+					"name": "deleteEmployeeById()",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"password": "admin",
+								"username": "admin"
+							}
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "X-CSRF-TOKEN",
+								"value": "zpayAjRH4j3iwqvr9sMKauRDdCcK_a8eRGNLALAqHa3-pzl7-KbWZA0j0V7Po5jex-4-C9xwWR9smJ4zJQFyOdEcLZ-fxAhK",
+								"type": "text"
+							}
+						],
+						"url": "http://localhost:8080/employees/3"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CompressiveStrengthTest Entity",
+			"item": [
+				{
+					"name": "addCompressiveStrengthTest()",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"password": "admin",
+								"username": "admin"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-CSRF-TOKEN",
+								"value": "qL6nxPzfjHY2gW1Nh8dXhKyT5Pj3HFTNQLPiAeoKLAAyEXP9m4yR8c-86RIbuQgrtepjt5X1ycDCJGbgI4bXMIw8FDYFIUDJ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"batch\":\"25-04\",\r\n    \"testDate\":\"2025-06-26T21:47:32.642\",\r\n    \"measuredStrength\":15,\r\n    \"productFormatId\": 1,\r\n    \"employeeId\": 4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/compressive-strength-tests"
+					},
+					"response": []
+				},
+				{
+					"name": "getCompressiveStrengthTestById()",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"password": "admin",
+								"username": "admin"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/compressive-strength-tests/3"
+					},
+					"response": []
+				},
+				{
+					"name": "getCompressiveStrengthTests()",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"password": "admin",
+								"username": "admin"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/compressive-strength-tests"
+					},
+					"response": []
+				},
+				{
+					"name": "deleteCompressiveStrengthTestById()",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"password": "admin",
+								"username": "admin"
+							}
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "X-CSRF-TOKEN",
+								"value": "qL6nxPzfjHY2gW1Nh8dXhKyT5Pj3HFTNQLPiAeoKLAAyEXP9m4yR8c-86RIbuQgrtepjt5X1ycDCJGbgI4bXMIw8FDYFIUDJ",
+								"type": "text"
+							}
+						],
+						"url": "http://localhost:8080/compressive-strength-tests/3"
+					},
+					"response": []
+				},
+				{
+					"name": "updateCompressiveStrengthTest()",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"password": "admin",
+								"username": "admin"
+							}
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "X-CSRF-TOKEN",
+								"value": "qL6nxPzfjHY2gW1Nh8dXhKyT5Pj3HFTNQLPiAeoKLAAyEXP9m4yR8c-86RIbuQgrtepjt5X1ycDCJGbgI4bXMIw8FDYFIUDJ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"7\",\r\n    \"batch\":\"25-09\",\r\n    \"testDate\": \"2035-06-08T00:00:00.000\",\r\n    \"measuredStrength\": 25,\r\n    \"productFormatId\": 1,\r\n    \"employeeId\": 4\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/compressive-strength-tests"
+					},
+					"response": []
+				},
+				{
+					"name": "getCompressiveStrengthTestsByEmployeeId()",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"password": "user",
+								"username": "user"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/compressive-strength-tests/get-by-employee-id/4"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ProductFormat Entity",
+			"item": [
+				{
+					"name": "addProductFormat()",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"password": "admin",
+								"username": "admin"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-CSRF-TOKEN",
+								"value": "zpayAjRH4j3iwqvr9sMKauRDdCcK_a8eRGNLALAqHa3-pzl7-KbWZA0j0V7Po5jex-4-C9xwWR9smJ4zJQFyOdEcLZ-fxAhK",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"formatName\":\"15\",\r\n    \"formatNumber\":\"4\",\r\n    \"minLength\":\"45\",\r\n    \"maxLength\":\"55\",\r\n    \"minWidth\":\"12\",\r\n    \"maxWidth\":\"14\",\r\n    \"minHeight\":\"22\",\r\n    \"maxHeight\":\"24\",\r\n    \"minWeight\":\"19\",\r\n    \"maxWeight\":\"21\",\r\n    \"minCompressiveStrengthInMPa\":\"12\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/product-formats"
+					},
+					"response": []
+				},
+				{
+					"name": "getProductFormats()",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"password": "user",
+								"username": "user"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/product-formats"
+					},
+					"response": []
+				},
+				{
+					"name": "getProductFormatsById()",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"password": "admin",
+								"username": "admin"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/product-formats/2"
+					},
+					"response": []
+				},
+				{
+					"name": "deleteProductFormatById()",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"password": "admin",
+								"username": "admin"
+							}
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "X-CSRF-TOKEN",
+								"value": "zpayAjRH4j3iwqvr9sMKauRDdCcK_a8eRGNLALAqHa3-pzl7-KbWZA0j0V7Po5jex-4-C9xwWR9smJ4zJQFyOdEcLZ-fxAhK",
+								"type": "text"
+							}
+						],
+						"url": "http://localhost:8080/product-formats/2"
+					},
+					"response": []
+				},
+				{
+					"name": "updateProductFormat()",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"password": "admin",
+								"username": "admin"
+							}
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "X-CSRF-TOKEN",
+								"value": "zpayAjRH4j3iwqvr9sMKauRDdCcK_a8eRGNLALAqHa3-pzl7-KbWZA0j0V7Po5jex-4-C9xwWR9smJ4zJQFyOdEcLZ-fxAhK",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"4\",\r\n    \"formatName\":\"500\",\r\n    \"formatNumber\":\"3\",\r\n    \"minLength\":\"45\",\r\n    \"maxLength\":\"55\",\r\n    \"minWidth\":\"12\",\r\n    \"maxWidth\":\"14\",\r\n    \"minHeight\":\"22\",\r\n    \"maxHeight\":\"24\",\r\n    \"minWeight\":\"19\",\r\n    \"maxWeight\":\"21\",\r\n    \"minCompressiveStrengthInMPa\":\"44\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/product-formats"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "csrf()",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"password": "admin",
+						"username": "admin"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/csrf/token"
+			},
+			"response": []
+		}
+	]
+}
