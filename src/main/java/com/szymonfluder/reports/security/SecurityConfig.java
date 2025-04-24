@@ -31,23 +31,23 @@ public class SecurityConfig {
         return new InMemoryUserDetailsManager(user, admin);
     }
 
-//    @Bean
-//    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-//        http
-//                .csrf(CsrfConfigurer::disable)
-//                .authorizeHttpRequests((authorize) -> authorize
-//                        // Allow access to Swagger
-//                        .requestMatchers(
-//                                "/v3/api-docs/**",
-//                                "/swagger-ui/**",
-//                                "/swagger-ui.html"
-//                        ).permitAll()
-//                        // Authenticate all other requests
-//                        .anyRequest().authenticated()
-//                )
-//                // Use basic authentication (user/pass)
-//                .httpBasic(Customizer.withDefaults());
-//
-//        return http.build();
-//    }
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http
+                .csrf(CsrfConfigurer::disable)
+                .authorizeHttpRequests((authorize) -> authorize
+                        // Allow access to Swagger
+                        .requestMatchers(
+                                "/v3/api-docs/**",
+                                "/swagger-ui/**",
+                                "/swagger-ui.html"
+                        ).permitAll()
+                        // Authenticate all other requests
+                        .anyRequest().authenticated()
+                )
+                // Use basic authentication (user/pass)
+                .httpBasic(Customizer.withDefaults());
+
+        return http.build();
+    }
 }
