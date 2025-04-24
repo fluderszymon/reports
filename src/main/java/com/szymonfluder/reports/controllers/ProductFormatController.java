@@ -18,10 +18,9 @@ public class ProductFormatController {
         this.productFormatDAO = productFormatDAO;
     }
 
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
-    @PostMapping
-    public void addProductFormat(@RequestBody ProductFormatDTO productFormatDTO) {
-        productFormatDAO.addProductFormat(productFormatDTO);
+    @GetMapping
+    public List<ProductFormatDTO> getProductFormats() {
+        return productFormatDAO.getAllProductFormats();
     }
 
     @GetMapping("/{id}")
@@ -29,9 +28,10 @@ public class ProductFormatController {
         return productFormatDAO.getProductFormatById(id);
     }
 
-    @GetMapping
-    public List<ProductFormatDTO> getProductFormats() {
-        return productFormatDAO.getAllProductFormats();
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PostMapping
+    public void addProductFormat(@RequestBody ProductFormatDTO productFormatDTO) {
+        productFormatDAO.addProductFormat(productFormatDTO);
     }
 
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")

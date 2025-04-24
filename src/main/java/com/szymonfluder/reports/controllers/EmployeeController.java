@@ -18,20 +18,20 @@ public class EmployeeController {
         this.employeeDAO = theEmployeeDAO;
     }
 
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
-    @PostMapping
-    public void addEmployee(@RequestBody EmployeeDTO employeeDTO){
-        employeeDAO.addEmployee(employeeDTO);
+    @GetMapping
+    public List<EmployeeDTO> getAllEmployees() {
+        return employeeDAO.getAllEmployees();
     }
 
-    @GetMapping("/{id}")
+   @GetMapping("/{id}")
     public EmployeeDTO getEmployeeById(@PathVariable int id) {
         return employeeDAO.getEmployeeById(id);
     }
 
-    @GetMapping
-    public List<EmployeeDTO> getAllEmployees() {
-        return employeeDAO.getAllEmployees();
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PostMapping
+    public void addEmployee(@RequestBody EmployeeDTO employeeDTO){
+        employeeDAO.addEmployee(employeeDTO);
     }
 
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")

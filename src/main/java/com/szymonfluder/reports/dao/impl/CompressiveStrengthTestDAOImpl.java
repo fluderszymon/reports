@@ -46,7 +46,6 @@ public class CompressiveStrengthTestDAOImpl implements CompressiveStrengthTestDA
         TypedQuery<CompressiveStrengthTest> query = entityManager.createQuery("SELECT cst FROM CompressiveStrengthTest cst " +
                                                                               "WHERE cst.id=:id", CompressiveStrengthTest.class)
             .setParameter("id", id);
-
             return compressiveStrengthTestMapper.compressiveStrengthTestToCompressiveStrengthTestDto(query.getSingleResult());
     }
 
