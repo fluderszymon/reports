@@ -3,7 +3,7 @@ package com.szymonfluder.reports.dao.impl;
 import com.szymonfluder.reports.entity.Employee;
 import com.szymonfluder.reports.dao.EmployeeDAO;
 import com.szymonfluder.reports.dto.EmployeeDTO;
-import com.szymonfluder.reports.dto.EmployeeMapper;
+import com.szymonfluder.reports.mapper.EmployeeMapper;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;

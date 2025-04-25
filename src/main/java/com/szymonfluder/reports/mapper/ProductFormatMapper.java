@@ -1,5 +1,6 @@
-package com.szymonfluder.reports.dto;
+package com.szymonfluder.reports.mapper;
 
+import com.szymonfluder.reports.dto.ProductFormatDTO;
 import com.szymonfluder.reports.entity.ProductFormat;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
