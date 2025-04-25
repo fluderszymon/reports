@@ -1,10 +1,8 @@
 package com.szymonfluder.reports.service;
 
 import com.szymonfluder.reports.dto.CompressiveStrengthTestDTO;
-import org.springframework.stereotype.Service;
 import java.util.List;
 
-@Service
 public interface CompressiveStrengthTestService {
 
     CompressiveStrengthTestDTO getCompressiveStrengthTestById(int id);

@@ -5,9 +5,11 @@ import com.szymonfluder.reports.dto.CompressiveStrengthTestDTO;
 import com.szymonfluder.reports.entity.CompressiveStrengthTest;
 import com.szymonfluder.reports.mapper.CompressiveStrengthTestMapper;
 import com.szymonfluder.reports.service.CompressiveStrengthTestService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class CompressiveStrengthTestServiceImpl implements CompressiveStrengthTestService {
 
     private final CompressiveStrengthTestDAO compressiveStrengthTestDAO;
