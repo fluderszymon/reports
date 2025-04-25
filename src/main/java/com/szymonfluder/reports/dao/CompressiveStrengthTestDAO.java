@@ -1,16 +1,15 @@
 package com.szymonfluder.reports.dao;
 
-import com.szymonfluder.reports.dto.CompressiveStrengthTestDTO;
-
+import com.szymonfluder.reports.entity.CompressiveStrengthTest;
 import java.util.List;
 
 public interface CompressiveStrengthTestDAO {
 
-    void addCompressiveStrengthTest(CompressiveStrengthTestDTO compressiveStrengthTestDTO);
-    CompressiveStrengthTestDTO getCompressiveStrengthTestById(int id);
-    List<CompressiveStrengthTestDTO> getCompressiveStrengthTests();
+    void addCompressiveStrengthTest(CompressiveStrengthTest compressiveStrengthTest);
+    CompressiveStrengthTest getCompressiveStrengthTestById(int id);
+    List<CompressiveStrengthTest> getCompressiveStrengthTests();
     void deleteCompressiveStrengthTestById(int id);
-    void updateCompressiveStrengthTest(CompressiveStrengthTestDTO compressiveStrengthTestDTO);
+    void updateCompressiveStrengthTest(CompressiveStrengthTest compressiveStrengthTest);
 
-    List<CompressiveStrengthTestDTO> getCompressiveStrengthTestsByEmployeeId(int employeeId);
+    List<CompressiveStrengthTest> getCompressiveStrengthTestsByEmployeeId(int employeeId);
 }

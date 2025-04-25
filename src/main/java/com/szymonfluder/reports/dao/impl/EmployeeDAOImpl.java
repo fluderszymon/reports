@@ -22,28 +22,28 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     }
 
     @Override
-    @Transactional
-    public void addEmployee(Employee employee) {
-        Query query = entityManager.createQuery("INSERT INTO Employee (firstName, lastName, email) " +
-                                                "VALUES (:firstName, :lastName, :email)")
-            .setParameter("firstName", employee.getFirstName())
-            .setParameter("lastName", employee.getLastName())
-            .setParameter("email", employee.getEmail());
-        query.executeUpdate();
+    public List<Employee> getAllEmployees() {
+        TypedQuery<Employee> query = entityManager.createQuery("FROM Employee", Employee.class);
+        return query.getResultList();
     }
 
     @Override
     public Employee getEmployeeById(int id) {
         TypedQuery<Employee> query = entityManager.createQuery("SELECT u FROM Employee u " +
-                                                                "WHERE u.id=:id", Employee.class)
-            .setParameter("id", id);
+                        "WHERE u.id=:id", Employee.class)
+                .setParameter("id", id);
         return query.getSingleResult();
     }
 
     @Override
-    public List<Employee> getAllEmployees() {
-        TypedQuery<Employee> query = entityManager.createQuery("FROM Employee", Employee.class);
-        return query.getResultList();
+    @Transactional
+    public void addEmployee(Employee employee) {
+        Query query = entityManager.createQuery("INSERT INTO Employee (firstName, lastName, email) " +
+                        "VALUES (:firstName, :lastName, :email)")
+                .setParameter("firstName", employee.getFirstName())
+                .setParameter("lastName", employee.getLastName())
+                .setParameter("email", employee.getEmail());
+        query.executeUpdate();
     }
 
     @Override
