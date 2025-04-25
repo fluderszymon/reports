@@ -5,8 +5,11 @@ import com.szymonfluder.reports.dto.ProductFormatDTO;
 import com.szymonfluder.reports.entity.ProductFormat;
 import com.szymonfluder.reports.mapper.ProductFormatMapper;
 import com.szymonfluder.reports.service.ProductFormatService;
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 
+@Service
 public class ProductFormatServiceImpl implements ProductFormatService {
 
     private final ProductFormatDAO productFormatDAO;
