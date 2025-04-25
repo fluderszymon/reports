@@ -1,12 +1,12 @@
 # Reports App
 
-Ceramic hollow bricks are widely used as a construction material. During its production several parameters are measured and noted on 
-paper reports by machine operators. Compressive strength is one of the crucial parameters checked after firing of ceramics prefabricates and for 
-each brick format there is a given minimum value of compressive strength measured during production. 
+Ceramic hollow bricks are widely used as a construction material. During their production, several parameters are measured and recorded on 
+paper reports by machine operators. Compressive strength is one of the crucial parameters checked after firing of ceramics prefabricates, and for 
+each brick format, there is a specified minimum value of compressive strength that must be met during production. 
 <br><br>
-Reports App enables end-user to manage employees 
-and compressive strength tests done by them on each format produced in batch. Three entities are introduced - Employee, ProductFormat and
-CompressiveStrengthTest. Relations between them are obtained by @OneToMany and @ManyToOne annotations. 
+The Reports App enables end-users to manage employees 
+and compressive strength tests they perform for each format produced in batch. Three entities are introduced: Employee, ProductFormat and
+CompressiveStrengthTest. Relationships between them are defined by @OneToMany and @ManyToOne annotations. 
 <br>
 
 ![entities_relations.png](docs/entities_relations.png)
@@ -28,12 +28,13 @@ CompressiveStrengthTest. Relations between them are obtained by @OneToMany and @
 
 <li>MySQL Server -> mySQL database for storing entities</li>
 
-<li>Hibernate -> ORM mappings with relations @OneToMany and @ManyToOne. In DAO layer interfaces like EntityManager, Query and TypedQuery are used for managing entities stored in database.</li>
+<li>Hibernate -> for ORM mappings with @OneToMany and @ManyToOne relationships. In DAO layer interfaces like EntityManager, Query and TypedQuery were used for managing entities stored in a database.
+These interfaces enabled author to learn more about JPQL expressions. JPA Repository impl could be used as an alternative to this solution.</li>
 
 <li>Spring Security -> basic auth for two roles - User and Admin. @PreAuthorize for controller classes with role USER and for methods in controller handling http requests POST, PUT, DELETE with role ADMIN. There is
 one controller for obtaining csrf token, which has to be passed in header as X-CSRF-TOKEN for adding, updating and deleting entities from db.</li>
 
-<li>MapStruct -> creating DTOs from entities and vice versa with @Mapper annotated methods. Creating and updating entity with relations is now possible with one @RequestBody without ids as @PathVariable</li>
+<li>MapStruct -> creating DTOs from entities and vice versa with @Mapper annotated methods. Creating and updating entity with relations is now possible with one @RequestBody without IDs as @PathVariable</li>
 
 </ul>
 
