@@ -1,5 +1,6 @@
-package com.szymonfluder.reports.dto;
+package com.szymonfluder.reports.mapper;
 
+import com.szymonfluder.reports.dto.EmployeeDTO;
 import com.szymonfluder.reports.entity.Employee;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;

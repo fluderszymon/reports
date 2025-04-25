@@ -3,7 +3,7 @@ package com.szymonfluder.reports.dao.impl;
 import com.szymonfluder.reports.entity.ProductFormat;
 import com.szymonfluder.reports.dao.ProductFormatDAO;
 import com.szymonfluder.reports.dto.ProductFormatDTO;
-import com.szymonfluder.reports.dto.ProductFormatMapper;
+import com.szymonfluder.reports.mapper.ProductFormatMapper;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;

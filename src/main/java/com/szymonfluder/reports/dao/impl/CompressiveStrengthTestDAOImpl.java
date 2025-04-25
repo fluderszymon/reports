@@ -2,7 +2,7 @@ package com.szymonfluder.reports.dao.impl;
 
 import com.szymonfluder.reports.entity.CompressiveStrengthTest;
 import com.szymonfluder.reports.dao.CompressiveStrengthTestDAO;
-import com.szymonfluder.reports.dto.CompressiveStrengthTestMapper;
+import com.szymonfluder.reports.mapper.CompressiveStrengthTestMapper;
 import com.szymonfluder.reports.dto.CompressiveStrengthTestDTO;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;

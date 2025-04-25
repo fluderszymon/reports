@@ -1,4 +1,4 @@
-package com.szymonfluder.reports.controllers;
+package com.szymonfluder.reports.controller;
 
 import com.szymonfluder.reports.dao.CompressiveStrengthTestDAO;
 import com.szymonfluder.reports.dto.CompressiveStrengthTestDTO;

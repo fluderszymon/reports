@@ -1,5 +1,6 @@
-package com.szymonfluder.reports.dto;
+package com.szymonfluder.reports.mapper;
 
+import com.szymonfluder.reports.dto.CompressiveStrengthTestDTO;
 import com.szymonfluder.reports.entity.CompressiveStrengthTest;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
