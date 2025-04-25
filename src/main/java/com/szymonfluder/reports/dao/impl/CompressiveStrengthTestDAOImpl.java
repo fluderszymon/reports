@@ -84,10 +84,10 @@ public class CompressiveStrengthTestDAOImpl implements CompressiveStrengthTestDA
     }
 
     @Override
-    public List<CompressiveStrengthTestDTO> getCompressiveStrengthTestsByEmployeeId(int employee_id) {
+    public List<CompressiveStrengthTestDTO> getCompressiveStrengthTestsByEmployeeId(int employeeId) {
         TypedQuery<CompressiveStrengthTest> query = entityManager.createQuery("SELECT cst FROM CompressiveStrengthTest cst INNER JOIN cst.employee " +
                                                                               "WHERE cst.employee.id =:id", CompressiveStrengthTest.class)
-            .setParameter("id", employee_id);
+            .setParameter("id", employeeId);
 
         return query.getResultList()
                 .stream()

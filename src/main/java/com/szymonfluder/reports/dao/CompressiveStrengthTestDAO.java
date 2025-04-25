@@ -12,5 +12,5 @@ public interface CompressiveStrengthTestDAO {
     void deleteCompressiveStrengthTestById(int id);
     void updateCompressiveStrengthTest(CompressiveStrengthTestDTO compressiveStrengthTestDTO);
 
-    List<CompressiveStrengthTestDTO> getCompressiveStrengthTestsByEmployeeId(int employee_id);
+    List<CompressiveStrengthTestDTO> getCompressiveStrengthTestsByEmployeeId(int employeeId);
 }
