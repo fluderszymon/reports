@@ -16,8 +16,6 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
     private final EntityManager entityManager;
 
-
-
     @Autowired
     public EmployeeDAOImpl(EntityManager entityManager) {
         this.entityManager = entityManager;

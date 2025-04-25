@@ -7,7 +7,6 @@ import com.szymonfluder.reports.mapper.EmployeeMapper;
 import com.szymonfluder.reports.service.EmployeeService;
 import org.springframework.stereotype.Service;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
@@ -25,7 +24,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employees
                 .stream()
                 .map(employeeMapper::employeeToEmployeeDto)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     @Override

@@ -1,10 +1,9 @@
 package com.szymonfluder.reports.controller;
 
-import com.szymonfluder.reports.dao.ProductFormatDAO;
 import com.szymonfluder.reports.dto.ProductFormatDTO;
+import com.szymonfluder.reports.service.ProductFormatService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -12,37 +11,37 @@ import java.util.List;
 @RequestMapping("/product-formats")
 public class ProductFormatController {
 
-    private final ProductFormatDAO productFormatDAO;
+    private final ProductFormatService productFormatService;
 
-    public ProductFormatController(ProductFormatDAO productFormatDAO) {
-        this.productFormatDAO = productFormatDAO;
+    public ProductFormatController(ProductFormatService productFormatService) {
+        this.productFormatService = productFormatService;
     }
 
     @GetMapping
     public List<ProductFormatDTO> getProductFormats() {
-        return productFormatDAO.getAllProductFormats();
+        return productFormatService.getAllProductFormats();
     }
 
     @GetMapping("/{id}")
     public ProductFormatDTO getProductFormatById(@PathVariable int id) {
-        return productFormatDAO.getProductFormatById(id);
+        return productFormatService.getProductFormatById(id);
     }
 
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PostMapping
     public void addProductFormat(@RequestBody ProductFormatDTO productFormatDTO) {
-        productFormatDAO.addProductFormat(productFormatDTO);
+        productFormatService.addProductFormat(productFormatDTO);
     }
 
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @DeleteMapping("/{id}")
     public void deleteProductFormatById(@PathVariable int id) {
-        productFormatDAO.deleteProductFormatById(id);
+        productFormatService.deleteProductFormatById(id);
     }
 
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PutMapping
     public void updateProductFormat(@RequestBody ProductFormatDTO productFormatDTO) {
-        productFormatDAO.updateProductFormat(productFormatDTO);
+        productFormatService.updateProductFormat(productFormatDTO);
     }
 }
