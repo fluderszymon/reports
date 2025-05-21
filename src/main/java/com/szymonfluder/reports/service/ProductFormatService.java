@@ -1,7 +1,6 @@
 package com.szymonfluder.reports.service;
 
 import com.szymonfluder.reports.dto.ProductFormatDTO;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 

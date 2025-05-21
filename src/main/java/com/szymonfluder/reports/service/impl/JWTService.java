@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
-import java.security.Key;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 import java.util.Date;
@@ -18,8 +17,9 @@ import java.util.Map;
 import java.util.function.Function;
 
 @Service
-public class JWTService {
+public class JWTService implements com.szymonfluder.reports.service.JWTService {
 
+    private static final int durationTimeOfJWTInMillis = 10 * 60 * 1000;
     private String secretKey = "";
 
     public JWTService() {
@@ -33,7 +33,6 @@ public class JWTService {
     }
 
     public String generateToken(String username) {
-
         Map<String, Object> claims = new HashMap<>();
 
         return Jwts.builder()
@@ -41,7 +40,7 @@ public class JWTService {
                 .add(claims)
                 .subject(username)
                 .issuedAt(new Date(System.currentTimeMillis()))
-                .expiration(new Date(System.currentTimeMillis() + 10*60*1000))
+                .expiration(new Date(System.currentTimeMillis() + durationTimeOfJWTInMillis))
                 .and()
                 .signWith(getKey())
                 .compact();

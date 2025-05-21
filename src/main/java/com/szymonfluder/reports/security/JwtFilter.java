@@ -1,6 +1,6 @@
 package com.szymonfluder.reports.security;
 
-import com.szymonfluder.reports.service.impl.CustomUserDetailsService;
+import com.szymonfluder.reports.service.impl.UserDetailsServiceImpl;
 import com.szymonfluder.reports.service.impl.JWTService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -20,8 +20,8 @@ import java.io.IOException;
 @Component
 public class JwtFilter extends OncePerRequestFilter {
 
-    private JWTService jwtService;
-    private ApplicationContext applicationContext;
+    private final JWTService jwtService;
+    private final ApplicationContext applicationContext;
 
     @Autowired
     public JwtFilter(JWTService jwtService, ApplicationContext applicationContext) {
@@ -41,7 +41,7 @@ public class JwtFilter extends OncePerRequestFilter {
         }
 
         if(username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-            UserDetails userDetails = applicationContext.getBean(CustomUserDetailsService.class).loadUserByUsername(username);
+            UserDetails userDetails = applicationContext.getBean(UserDetailsServiceImpl.class).loadUserByUsername(username);
 
             if(jwtService.validateToken(token, userDetails)) {
                 UsernamePasswordAuthenticationToken authToken =
